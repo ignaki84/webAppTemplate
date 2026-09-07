@@ -1,0 +1,34 @@
+```mermaid
+classDiagram
+    %% Definición de clases y sus miembros
+    class Usuario {
+        -int id
+        -String nombre
+        -String email
+        +iniciarSesion() bool
+        +cerrarSesion() void
+    }
+
+    class Cliente {
+        -String direccionEnvio
+        +realizarPedido()
+    }
+
+    class Pedido {
+        -int idPedido
+        -Date fecha
+        -String estado
+        +calcularTotal() double
+    }
+
+    class Producto {
+        -int idProducto
+        -String nombre
+        -double precio
+    }
+
+    %% Relaciones UML
+    Usuario <|-- Cliente : Herencia
+    Cliente "1" --> "*" Pedido : Crea
+    Pedido "1" *-- "1..*" Producto : Contiene (Composición)
+```
